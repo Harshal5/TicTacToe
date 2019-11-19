@@ -2,7 +2,9 @@ package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -53,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
                             gameState[winningPosition[0]] != 2) {
 
                     // Someone has won
-
                     gameIsActive = false;
 
                     String winner = "Red";
 
                     if (gameState[winningPosition[0]] == 0) {
+
                         winner = "Yellow";
                     }
 
@@ -109,12 +111,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < gameState.length; i++ ) {
             gameState[i] = 2;
         }
-
-        GridLayout gridLayout = findViewById(R.id.gridLayout);
-
-        for(int i = 0; i < gridLayout.getChildCount(); i++) {
-            ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
-        }
+        startActivity(new Intent(this, MainActivity.class));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
